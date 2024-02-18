@@ -1,0 +1,59 @@
+<head>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<title>
+    ETF - SPZY
+</title>
+<h1>
+    ETF - SPZY
+</h1>
+<h2>
+    SPZY is an ETF that focuses on appreciating the growth of SPX while reducing loss.
+</h2>
+<body>
+    Our strategy: We buy out-of-the-money puts and sell out-of-the-money calls
+    at the end of each Friday using MOC orders. The contracts will last one week
+    their expiration date being the next Friday. The number of puts that we buy,
+    and the number of calls that we sell, will correspond to the number of
+    shares we have of the underlying (SPX).
+
+    We choose the strike so that the number of put contracts we want to buy times the put 
+    price for that strike is equal to X. In other words, we want to invest $X in
+    puts. Likewise, we want to sell $X worth of calls. However, in a real market, this is
+    unlikely, so a small frictional cost is associated with this strategy.
+
+    A major issue is that not all strikes are available. Moreover, some of
+    the ones that are available may not be liquid enough. Hence, we only consider
+    options that have passed a liquidity threshold: 25% most liquid out-of-the-money strike
+    prices and percentage difference between bid and ask.<br>
+    
+    <!-- <button id="bttn1">2023</button><br>
+    <button>2022</button><br>
+    <button>2021</button><br>
+    <button>2020</button><br>
+    <button>2019</button><br> -->
+    <br>
+</body>
+
+<p1>
+
+</p1>
+
+
+
+<!-- <input type="radio" name="rd1" id="red" onchange="myFunction()">2023<br>
+<input type="radio" name="rd1" id="red" onchange="myFunction()">2022<br>
+<input type="radio" name="rd1" id="red" onchange="myFunction()">2021<br>
+<input type="radio" name="rd1" id="red" onchange="myFunction()">2020<br>
+<input type="radio" name="rd1" id="red" onchange="myFunction()">2019<br>
+<input type="radio" name="rd1" id="red" onclick="show_image()">2018<br> -->
+
+<!-- <h3></h3>
+<body>
+    <img src="images/annual_2023.png" width="300" height="300" style="border:5px solid black" >
+</body> -->
+
+
+
+<script src="func.js"></script>

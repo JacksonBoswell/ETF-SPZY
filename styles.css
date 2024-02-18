@@ -1,0 +1,30 @@
+h1 {
+    text-align: center;
+}
+body {
+    text-align: center;
+    position: absolute;
+    top: 80px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+}
+
+body {
+    background-color: rgb(150, 130, 100);
+}
+.bttn1 {
+    color: rgb(149, 149, 194);
+}
+.bttn2 {
+    color: rgb(149, 149, 194);
+}
+.bttn3 {
+    color: rgb(149, 149, 194);
+}
+.bttn4 {
+    color: rgb(149, 149, 194);
+}
+.bttn5 {
+    color: rgb(149, 149, 194);
+}
