@@ -56,16 +56,15 @@ def iterate_single_file(filename, rho):
         if (day_of_week == 'Friday'):
             #we want to handle puts and calls
             handle_last_week_puts(underlying)
-            print(len(considered_puts))
             handle_last_week_calls(underlying)
             handle_puts(day_frame, 0.01, rho)
-            print(len(considered_puts))
             handle_calls(day_frame, 0.01, rho)
             # account for price friction - difference in put and call option price
             if len(considered_puts) != 0 and len(considered_calls):
                 friction = considered_puts[0][' [P_ASK]'] - considered_calls[0][' [P_ASK]']
                 num_units = portfolio_value[0] / considered_puts[0][' [P_ASK]']
-                portfolio_value[0] -= (friction * num_units)
+
+    print(portfolio_value[0])
 
 
 
@@ -85,8 +84,8 @@ def handle_last_week_puts(underlying):
     # put is in the money - expires with value - must restructure portfolio value
     if considered_puts[0][' [STRIKE]'] > underlying:
         num_units = portfolio_value[0] / underlying
-        update_portfolio = num_units * considered_puts[0][' [STRIKE]']
-        portfolio_value[0] = update_portfolio
+        loss = num_units * (considered_puts[0][' [STRIKE]'] - underlying)
+        portfolio_value[0] += (loss / 10)
     considered_puts.pop(0)
     
 
@@ -107,8 +106,8 @@ def handle_last_week_calls(underlying):
     # call is in the money - expires with value - must restructure portfolio value
     if considered_calls[0][' [STRIKE]'] < underlying:
         num_units = portfolio_value[0] / underlying
-        update_portfolio = num_units * considered_calls[0][' [STRIKE]']
-        portfolio_value[0] = update_portfolio
+        gain = num_units * (underlying - considered_calls[0][' [STRIKE]'])
+        portfolio_value[0] -= gain
     considered_calls.pop(0)
     
 
@@ -197,6 +196,7 @@ def calculate_daily_growth():
     for i in range (len(daily_underlying)):
         if (i != 0):
             daily_growth.append(daily_underlying[i] / daily_underlying[i - 1])
+    return daily_growth
 
 def calculate_portfolio_value():
     '''Calculates the final portfolio value over the alotted time.
@@ -236,7 +236,7 @@ def iterate_over_files(directory, rho):
 if __name__ == '__main__':
     for i in range(1, 10):
         rho = i / 100
-        # rho = 0.01
+        rho = 0.01
         daily_growth =[]
         daily_growth.append(1)
         daily_underlying = []
@@ -255,6 +255,3 @@ if __name__ == '__main__':
         print(rho)
         print(portfolio_value[0])
         print()
-
-    
-    
